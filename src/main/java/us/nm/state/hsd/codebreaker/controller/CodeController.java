@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import us.nm.state.hsd.codebreaker.service.CodeService;
 
 @RestController
 @RequestMapping("/codes")
+@CrossOrigin("https://www.webtools.services")
 public class CodeController {
 
   private final CodeService codeService;

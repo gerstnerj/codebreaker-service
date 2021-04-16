@@ -41,7 +41,14 @@ public class CodeController {
   
   @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
   public Code get(@PathVariable String id) {
-    return null;
+    return codeService
+        .get(id)
+        .orElseThrow();
+  }
+  
+  @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+  public Iterable<Code> list() {
+    return codeService.list();
   }
   
 }

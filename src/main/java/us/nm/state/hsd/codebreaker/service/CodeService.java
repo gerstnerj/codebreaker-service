@@ -1,6 +1,8 @@
 package us.nm.state.hsd.codebreaker.service;
 
+import java.util.Optional;
 import java.util.Random;
+import java.util.UUID;
 import java.util.stream.IntStream;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
@@ -38,11 +40,15 @@ public class CodeService {
         .toArray();
     String text = new String(secret, 0 , secret.length);
     code.setText(text);
-    return codeRepository.save(code);
-    
- 
+    return codeRepository.save(code); 
   }
   
+  public Optional<Code> get(@NonNull String key){
+    UUID id = stringifier.fromString(key);
+    return codeRepository.findById(id);
+  }
   
-  
+  public Iterable<Code> list(){
+    return codeRepository.getAllByOrderByCreatedDesc();
+  }
 }
